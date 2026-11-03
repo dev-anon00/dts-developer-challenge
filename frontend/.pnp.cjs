@@ -40,6 +40,7 @@ const RAW_RUNTIME_STATE =
           ["@types/supertest", "npm:7.2.1"],\
           ["@typescript-eslint/parser", "virtual:3a02cceef93055271d0890b855d0c93a770c9c876ee9b808cf9e23d8d1b8581b5b6efcfb80a9768d650dfa22f93777eca81ae9ef4de2301b22a7619649eb692a#npm:8.72.1"],\
           ["axios", "npm:1.21.0"],\
+          ["chokidar", "npm:3.6.0"],\
           ["codeceptjs", "virtual:3a02cceef93055271d0890b855d0c93a770c9c876ee9b808cf9e23d8d1b8581b5b6efcfb80a9768d650dfa22f93777eca81ae9ef4de2301b22a7619649eb692a#npm:4.2.2"],\
           ["cookie-parser", "npm:1.4.7"],\
           ["copy-webpack-plugin", "virtual:3a02cceef93055271d0890b855d0c93a770c9c876ee9b808cf9e23d8d1b8581b5b6efcfb80a9768d650dfa22f93777eca81ae9ef4de2301b22a7619649eb692a#npm:14.0.0"],\
@@ -6901,6 +6902,7 @@ const RAW_RUNTIME_STATE =
           ["@types/supertest", "npm:7.2.1"],\
           ["@typescript-eslint/parser", "virtual:3a02cceef93055271d0890b855d0c93a770c9c876ee9b808cf9e23d8d1b8581b5b6efcfb80a9768d650dfa22f93777eca81ae9ef4de2301b22a7619649eb692a#npm:8.72.1"],\
           ["axios", "npm:1.21.0"],\
+          ["chokidar", "npm:3.6.0"],\
           ["codeceptjs", "virtual:3a02cceef93055271d0890b855d0c93a770c9c876ee9b808cf9e23d8d1b8581b5b6efcfb80a9768d650dfa22f93777eca81ae9ef4de2301b22a7619649eb692a#npm:4.2.2"],\
           ["cookie-parser", "npm:1.4.7"],\
           ["copy-webpack-plugin", "virtual:3a02cceef93055271d0890b855d0c93a770c9c876ee9b808cf9e23d8d1b8581b5b6efcfb80a9768d650dfa22f93777eca81ae9ef4de2301b22a7619649eb692a#npm:14.0.0"],\
@@ -9082,7 +9084,7 @@ const RAW_RUNTIME_STATE =
           ["@types/chokidar", null],\
           ["a-sync-waterfall", "npm:1.0.1"],\
           ["asap", "npm:2.0.6"],\
-          ["chokidar", null],\
+          ["chokidar", "npm:3.6.0"],\
           ["commander", "npm:5.1.0"],\
           ["nunjucks", "virtual:3a02cceef93055271d0890b855d0c93a770c9c876ee9b808cf9e23d8d1b8581b5b6efcfb80a9768d650dfa22f93777eca81ae9ef4de2301b22a7619649eb692a#npm:3.2.4"]\
         ],\
