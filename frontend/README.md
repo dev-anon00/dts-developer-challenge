@@ -6,9 +6,13 @@ as creative as you want.
 
 To begin with, you should be able to run this by running:
 
-1. `npm install`
-2. `yarn install`
-3. `yarn webpack`
-4. `yarn start:dev` or navigate to package.json and run the script manually
+1. `yarn install`
+2. `yarn webpack`
+3. `yarn start:dev` or navigate to package.json and run the script manually
 
 You can change the structure however you like!
+
+## Editor SDKs
+
+`.yarn/sdks/` and `.vscode/` are auto-generated for Yarn
+Plug'n'Play. Don't edit them by hand, regenerate with `yarn dlx @yarnpkg/sdks vscode`.

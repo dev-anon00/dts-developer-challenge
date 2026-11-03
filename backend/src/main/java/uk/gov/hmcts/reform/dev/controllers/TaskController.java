@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.gov.hmcts.reform.dev.dto.TaskResponse;
+import uk.gov.hmcts.reform.dev.services.TaskService;
 
 import java.util.List;
 
@@ -15,7 +16,9 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequestMapping("tasks")
 public class TaskController {
 
-    @GetMapping(value = "/", produces = "application/json")
+    TaskService taskService;
+
+    @GetMapping(value = "", produces = "application/json")
     public ResponseEntity<List<TaskResponse>> getTasks() {
         return ok(List.of());
     }

@@ -1,17 +1,19 @@
 package uk.gov.hmcts.reform.dev.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uk.gov.hmcts.reform.dev.dto.TaskResponse;
+import uk.gov.hmcts.reform.dev.models.Task;
 import uk.gov.hmcts.reform.dev.repositories.TaskRepository;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class TaskService {
 
-    TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
-    public List<TaskResponse> getAllTasks() {
-        return List.of();
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();
     }
 }
