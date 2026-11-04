@@ -35,6 +35,5 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      # Hibernate creates/updates the schema for now
-      # switch to `validate` once Flyway migrations are added
-      ddl-auto: update
+      # Flyway handles the schema (db/migration)
+      ddl-auto: validate
