@@ -159,6 +159,9 @@ dependencies {
 
   // additional dependencies
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  runtimeOnly 'org.postgresql:postgresql'
+  // in-memory database for tests, so they run without Postgres
+  testImplementation 'com.h2database:h2'
 
   implementation 'com.github.hmcts.java-logging:logging:6.1.9'
 
