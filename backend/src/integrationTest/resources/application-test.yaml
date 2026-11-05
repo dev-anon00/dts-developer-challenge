@@ -1,0 +1,7 @@
+# In-memory H2 in PostgreSQL mode, so the integration tests run without Postgres.
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:tasks;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    username: sa
+    password: ""
