@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import uk.gov.hmcts.reform.dev.dto.TaskRequest;
+import uk.gov.hmcts.reform.dev.dto.UpdateTaskStatusRequest;
 import uk.gov.hmcts.reform.dev.models.Task;
 import uk.gov.hmcts.reform.dev.repositories.TaskRepository;
 
@@ -30,6 +31,13 @@ public class TaskService {
     @Transactional
     public Task createTask(TaskRequest taskRequest) {
         return taskRepository.save(taskRequest.toTask());
+    }
+
+    @Transactional
+    public Task updateStatus(long id, UpdateTaskStatusRequest updateTaskStatusRequest) {
+        Task task = getTask(id);
+        task.setStatus(updateTaskStatusRequest.status());
+        return taskRepository.save(task);
     }
 
     @Transactional
