@@ -1,27 +1,18 @@
 {
   "compilerOptions": {
-    "outDir": "./src/",
-    "rootDir": "./src/",
-    "ignoreDeprecations": "6.0",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2020",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
     "strict": true,
-    "noImplicitAny": true,
-    "noImplicitThis": false,
-    "moduleResolution": "node",
     "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "useUnknownInCatchVariables": false,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
     "skipLibCheck": true,
-    "types": ["node", "jest"],
-    "lib": ["es2020", "dom", "dom.iterable"],
-    "baseUrl": "src/main",
-    "paths": {
-      "router/*": ["router/*"],
-      "routes/*": ["routes/*"]
-    }
+    "noEmit": true,
+    "types": ["node"]
   },
-  "exclude": ["**/*.test.ts", "**/codecept.conf.ts", "**/__mocks__/*"]
+  "include": ["src", "vite.config.ts", "eslint.config.js"]
 }
