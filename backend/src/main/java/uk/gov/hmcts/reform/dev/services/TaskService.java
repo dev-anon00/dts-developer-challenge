@@ -3,15 +3,13 @@ package uk.gov.hmcts.reform.dev.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 import uk.gov.hmcts.reform.dev.dto.TaskRequest;
 import uk.gov.hmcts.reform.dev.dto.UpdateTaskStatusRequest;
+import uk.gov.hmcts.reform.dev.exceptions.TaskNotFoundException;
 import uk.gov.hmcts.reform.dev.models.Task;
 import uk.gov.hmcts.reform.dev.repositories.TaskRepository;
 
 import java.util.List;
-
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RequiredArgsConstructor
 @Service
@@ -25,7 +23,7 @@ public class TaskService {
 
     public Task getTask(long id) {
         return taskRepository.findById(id)
-            .orElseThrow(() -> notFound(id));
+            .orElseThrow(() -> new TaskNotFoundException(id));
     }
 
     @Transactional
@@ -43,12 +41,8 @@ public class TaskService {
     @Transactional
     public void deleteTask(long id) {
         if (!taskRepository.existsById(id)) {
-            throw notFound(id);
+            throw new TaskNotFoundException(id);
         }
         taskRepository.deleteById(id);
-    }
-
-    private static ResponseStatusException notFound(long id) {
-        return new ResponseStatusException(NOT_FOUND, "Task " + id + " not found");
     }
 }
