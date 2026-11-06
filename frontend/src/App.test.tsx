@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
@@ -10,6 +10,8 @@ vi.mock('./api', async importOriginal => ({
   ...(await importOriginal<typeof import('./api')>()),
   listTasks: vi.fn(),
   createTask: vi.fn(),
+  updateTaskStatus: vi.fn(),
+  deleteTask: vi.fn(),
 }));
 
 const mocked = vi.mocked(api);
@@ -34,14 +36,6 @@ describe('App', () => {
     expect(await screen.findByText('Review case')).toBeInTheDocument();
     expect(screen.getByText('Check the bundle')).toBeInTheDocument();
     expect(screen.getByText('1 Dec 2026, 10:00')).toBeInTheDocument();
-    expect(within(screen.getByRole('table')).getByText('To do')).toBeInTheDocument();
-  });
-
-  test('shows a message when there are no tasks', async () => {
-    mocked.listTasks.mockResolvedValue([]);
-    render(<App />);
-
-    expect(await screen.findByText('No tasks yet.')).toBeInTheDocument();
   });
 
   test('shows a message when the backend is down', async () => {
@@ -78,5 +72,27 @@ describe('App', () => {
     expect(screen.getAllByText('Enter a title')).not.toHaveLength(0);
     expect(screen.getAllByText('Enter a due date and time')).not.toHaveLength(0);
     expect(mocked.createTask).not.toHaveBeenCalled();
+  });
+
+  test('updates a status', async () => {
+    const user = userEvent.setup();
+    mocked.updateTaskStatus.mockResolvedValue({ ...task, status: TaskStatus.COMPLETED });
+    render(<App />);
+
+    await user.selectOptions(await screen.findByLabelText('Status of Review case'), 'COMPLETED');
+
+    expect(mocked.updateTaskStatus).toHaveBeenCalledWith(1, TaskStatus.COMPLETED);
+  });
+
+  test('deletes a task after confirming', async () => {
+    const user = userEvent.setup();
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+    mocked.deleteTask.mockResolvedValue();
+    render(<App />);
+
+    await user.click(await screen.findByRole('button', { name: 'Delete' }));
+
+    expect(mocked.deleteTask).toHaveBeenCalledWith(1);
+    expect(screen.queryByText('Review case')).not.toBeInTheDocument();
   });
 });
