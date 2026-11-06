@@ -1,18 +1,38 @@
-# HMCTS Dev Test Frontend
+# Task manager frontend
 
-This will be the frontend for the brand new HMCTS case management system. As a potential candidate we are leaving
-this in your hands. Please refer to the brief for the complete list of tasks! Complete as much as you can and be
-as creative as you want.
+A single page React + TypeScript app (Vite) for creating, viewing, updating and deleting tasks. It uses the
+[GOV.UK Frontend](https://frontend.design-system.service.gov.uk/) CSS for styling.
 
-To begin with, you should be able to run this by running:
+## Running
 
-1. `yarn install`
-2. `yarn webpack`
-3. `yarn start:dev` or navigate to package.json and run the script manually
+Requires Node 22 and Yarn via Corepack. Use Yarn, not npm!!
 
-You can change the structure however you like!
+```
+yarn install
+yarn dev
+```
+
+The app runs on http://localhost:3100. Requests to `/api/*` are proxied to the backend via `http://localhost:4000`, to start the backend (see [`../backend/README.md`](../backend/README.md)).
+
+## Scripts
+
+| Script          | What it does                              |
+| --------------- | ----------------------------------------- |
+| `yarn dev`      | Start the dev server                      |
+| `yarn build`    | Type-check and build to `dist/`           |
+| `yarn preview`  | Serve the built app (with the same proxy) |
+| `yarn test`     | Run the Vitest + Testing Library tests    |
+| `yarn lint`     | ESLint and Prettier checks                |
+| `yarn lint:fix` | Fix lint and formatting issues            |
+
+## Structure
+
+- `src/App.tsx`: the task table, with status changes and delete.
+- `src/TaskForm.tsx`: the create form, with client-side validation and backend field errors.
+- `src/api.ts`: `fetch` calls to the backend and `ApiError`.
+- `src/types.ts`: types matching the API's request and response.
 
 ## Editor SDKs
 
-`.yarn/sdks/` and `.vscode/` are auto-generated for Yarn
-Plug'n'Play. Don't edit them by hand, regenerate with `yarn dlx @yarnpkg/sdks vscode`.
+`.yarn/sdks/` and `.vscode/` are auto-generated for Yarn Plug'n'Play. Can be regenerate by running
+`yarn dlx @yarnpkg/sdks vscode`.
