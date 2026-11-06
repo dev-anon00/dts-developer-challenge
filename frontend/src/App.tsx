@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { listTasks } from './api';
+import { TaskForm } from './TaskForm';
 import { STATUS_LABELS, Task } from './types';
 
 const byDueDate = (a: Task, b: Task) => a.dueDate.localeCompare(b.dueDate);
@@ -62,6 +63,8 @@ export function App() {
             </tbody>
           </table>
         )}
+
+        <TaskForm onCreated={task => setTasks([...tasks, task].sort(byDueDate))} />
       </main>
     </>
   );
